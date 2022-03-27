@@ -29,8 +29,8 @@ public class Quiz : MonoBehaviour
     void Start()
     {
         timer = findObjectOfType<Timer>();
-        GetNExtQuestion();
-        //DisplayQuestion();
+        scoreKeeper = findObjectOfType<scoreKeeper>();
+       
     }
 
     void Update()
