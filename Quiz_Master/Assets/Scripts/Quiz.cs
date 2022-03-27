@@ -8,7 +8,8 @@ public class Quiz : MonoBehaviour
 {
     [Header("Questions")]
    [SerializeField] TextMeshProUGUI questionText;
-   [SerializeField] QuestionSO question;
+   [SerializeField] List<QuestionSO> questions = new List<QuestionSO>();
+    QuestionSO currentquestion;
 
    [Header("Answers")]
    [SerializeField] GameObject[] answerButtons;
@@ -44,7 +45,7 @@ public class Quiz : MonoBehaviour
         }
         else if(!hasAnsweredEarly && !timer.isAnsweringQuestion)
         {
-            
+
         }
     }
 
@@ -104,9 +105,22 @@ public class Quiz : MonoBehaviour
 
     voidGetNextQuestion()
     {
+        if (questions,Count > 0)
         SetButtonState(true);
         SetDefaultButtonSprites();
+        GetRandomQuestion();
         DisplayQuestion();
+    }
+    void GetRandomQuestion()
+    {
+
+        int index = Random.Range(o, questions.Count);
+        currentQuestion = questions[index];
+
+        if(questions.Contains(currentQuestion))
+        {
+            questions.Remove(currentQuestion);
+        }
     }
 
 
