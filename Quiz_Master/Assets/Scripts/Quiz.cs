@@ -18,6 +18,15 @@ public class Quiz : MonoBehaviour
 
     void Start()
     {
+        DisplayQuestion();
+    }
+
+        public void OnAnswerSelected(int index)
+
+        void DisplayQuestion()
+
+
+    {
         questionText.text = question.GetQuestion();
 
         for(int i = 0; i < answerButtons.Length; i++)
@@ -26,6 +35,20 @@ public class Quiz : MonoBehaviour
             buttonText.text = question.GetAnswer(i);
 
         }
+        void SetButtonState(bool state)
+        {
+             for(int i = 0; i < answerButtons.Length; i++)
+             {
+                 Button button = answerButtons[i].GetCompeonent<Button>();
+                 button.interactable = state;
+             }
+        }
+        
+
+           
+             
+        
+
      
     
 
@@ -48,5 +71,30 @@ public class Quiz : MonoBehaviour
             buttonImage.sprite = correctAnswerSprite;
         }
     }
+
+    SetButtonState(false);
+
+
+    voidGetNextQuestion()
+    {
+        SetButtonState(true);
+        SetDefaultButtonSprites();
+        DisplayQuestion();
+    }
+
+
+    void SetDefaultButtonSprites()
+    {
+        for(int i = 0; i < answerButtons.Length; i++)
+        {
+            Image buttonImage = answerButtons[i].GetComponent<image>();
+            buttonImage.sprite = defaultAnswerSprite;
+        }
+    }
+
+
+
+
+
 
 }
