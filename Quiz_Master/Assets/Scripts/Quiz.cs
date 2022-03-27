@@ -23,6 +23,9 @@ public class Quiz : MonoBehaviour
    [SerializeField] Image timerImage;
    Timer timer;
 
+   [Header("ProgressBar")
+   [SerializeField] Slider ProgressBar;
+
 
 
 
@@ -30,7 +33,8 @@ public class Quiz : MonoBehaviour
     {
         timer = findObjectOfType<Timer>();
         scoreKeeper = findObjectOfType<scoreKeeper>();
-       
+       ProgressBar.maxValue = questions.Count;
+       ProgressBar.value = 0;
     }
 
     void Update()
